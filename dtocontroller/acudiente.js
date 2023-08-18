@@ -1,0 +1,44 @@
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+import { Expose } from 'class-transformer';
+import { IsDefined, IsString, IsInt } from 'class-validator';
+export class Acudiente {
+    constructor(data) {
+        Object.assign(this, data);
+        this.acu_codigo = 0,
+            this.acu_nombre = "",
+            this.acu_telefono = "",
+            this.acu_direccion = "";
+    }
+}
+__decorate([
+    Expose({ name: 'acu_codigo' }),
+    IsDefined({ message: 'El dato "acu_codigo" es de tipo Obligatorio' }),
+    IsInt({ message: 'El dato "acu_codigo" debe ser de tipo number' }),
+    __metadata("design:type", Number)
+], Acudiente.prototype, "acu_codigo", void 0);
+__decorate([
+    Expose({ name: 'acu_nombre' }),
+    IsDefined({ message: 'El dato "acu_nombre" es de tipo Obligatorio' }),
+    IsString({ message: 'El dato "acu_nombre" debe ser de tipo string' }),
+    __metadata("design:type", String)
+], Acudiente.prototype, "acu_nombre", void 0);
+__decorate([
+    Expose({ name: 'acu_telefono' }),
+    IsDefined({ message: 'El dato "acu_telefono" es de tipo Obligatorio' }),
+    IsString({ message: 'El dato "acu_telefono" debe ser de tipo string' }),
+    __metadata("design:type", String)
+], Acudiente.prototype, "acu_telefono", void 0);
+__decorate([
+    Expose({ name: 'acu_direccion' }),
+    IsDefined({ message: 'El dato "acu_direccion" es de tipo Obligatorio' }),
+    IsString({ message: 'El dato "acu_direccion" debe ser de tipo string' }),
+    __metadata("design:type", String)
+], Acudiente.prototype, "acu_direccion", void 0);
