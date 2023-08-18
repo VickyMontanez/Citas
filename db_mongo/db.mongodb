@@ -1,0 +1,238 @@
+use("db_citas");
+db.createCollection("tipo_documento", {
+    capped: true,
+    size: 10000,
+    max: 50,
+    validator:{
+        $jsonSchema:{
+            bsonType: 'object',
+            required: ['tipodoc_id', 'tipodoc_nombre', 'tipodoc_abreviatura'],
+            propierties: {
+                tipodoc_id :{
+                    bsonType: "number",
+                    description:'El dato "tipodoc_id" debe ser de tipo number'
+                },
+                tipodoc_nombre :{
+                    bsonType: "string",
+                    description:'El dato "tipodoc_nombre" debe ser de tipo string'
+                },
+                tipodoc_abreviatura :{
+                    bsonType: "string",
+                    description:'El dato "tipodoc_abreviatura" debe ser de tipo string'
+                }
+            }
+        }
+    }
+});
+
+db.createCollection("genero",{
+    capped: true,
+    size: 10000,
+    max: 50,
+    validator:{
+        $jsonSchema:{
+            bsonType: 'object',
+            required: ['gen_id', 'gen_nombre', 'gen_abreviatura'],
+            propierties: {
+                gen_id :{
+                    bsonType: "number",
+                    description:'El dato "gen_id" debe ser de tipo number'
+                },
+                gen_nombre :{
+                    bsonType: "string",
+                    description:'El dato "gen_nombre" debe ser de tipo string'
+                },
+                gen_abreviatura :{
+                    bsonType: "string",
+                    description:'El dato "gen_abreviatura" debe ser de tipo string'
+                }
+            }
+        }
+    }
+});
+
+db.createCollection("acudiente", {
+    capped: true,
+    size: 10000,
+    max: 50,
+    validator:{
+        $jsonSchema:{
+            bsonType: 'object',
+            required: ['acu_codigo', 'acu_nombre', 'acu_telefono', "acu_direccion"],
+            propierties: {
+                acu_codigo :{
+                    bsonType: "number",
+                    description:'El dato "acu_codigo" debe ser de tipo number'
+                },
+                acu_nombre :{
+                    bsonType: "string",
+                    description:'El dato "acu_nombre" debe ser de tipo string'
+                },
+                acu_telefono :{
+                    bsonType: "string",
+                    description:'El dato "acu_telefono" debe ser de tipo string'
+                },
+                acu_direccion:{
+                    bsonType: "string",
+                    description: 'El dato "acu_direccion debe ser de tipo string'
+                }
+            }
+        }
+    }
+});
+
+db.createCollection("usuario",{
+    capped: true,
+    size: 10000,
+    max: 50,
+    validator:{
+        $jsonSchema:{
+            bsonType: 'object',
+            required: ['usu_id', 'usu_nombre', 'tipodoc_abreviatura'],
+            propierties: {
+                usu_id :{
+                    bsonType: "number",
+                    description:'El dato "usu_id" debe ser de tipo number'
+                },
+                usu_nombre :{
+                    bsonType: "string",
+                    description:'El dato "usu_nombre" debe ser de tipo string'
+                },
+                tipodoc_abreviatura :{
+                    bsonType: "string",
+                    description:'El dato "tipodoc_abreviatura" debe ser de tipo string'
+                }
+            }
+        }
+    }
+});
+
+db.createCollection("cita",{
+    capped: true,
+    size: 10000,
+    max: 50,
+    validator:{
+        $jsonSchema:{
+            bsonType: 'object',
+            required: ['tipodoc_id', 'tipodoc_nombre', 'tipodoc_abreviatura'],
+            propierties: {
+                tipodoc_id :{
+                    bsonType: "number",
+                    description:'El dato "tipodoc_id" debe ser de tipo number'
+                },
+                tipodoc_nombre :{
+                    bsonType: "string",
+                    description:'El dato "tipodoc_nombre" debe ser de tipo string'
+                },
+                tipodoc_abreviatura :{
+                    bsonType: "string",
+                    description:'El dato "tipodoc_abreviatura" debe ser de tipo string'
+                }
+            }
+        }
+    }
+}),
+
+db.createCollection("estado_cita",{
+    capped: true,
+    size: 10000,
+    max: 50,
+    validator:{
+        $jsonSchema:{
+            bsonType: 'object',
+            required: ['tipodoc_id', 'tipodoc_nombre', 'tipodoc_abreviatura'],
+            propierties: {
+                tipodoc_id :{
+                    bsonType: "number",
+                    description:'El dato "tipodoc_id" debe ser de tipo number'
+                },
+                tipodoc_nombre :{
+                    bsonType: "string",
+                    description:'El dato "tipodoc_nombre" debe ser de tipo string'
+                },
+                tipodoc_abreviatura :{
+                    bsonType: "string",
+                    description:'El dato "tipodoc_abreviatura" debe ser de tipo string'
+                }
+            }
+        }
+    }
+});
+
+db.createCollection("medico",{
+    capped: true,
+    size: 10000,
+    max: 50,
+    validator:{
+        $jsonSchema:{
+            bsonType: 'object',
+            required: ['tipodoc_id', 'tipodoc_nombre', 'tipodoc_abreviatura'],
+            propierties: {
+                tipodoc_id :{
+                    bsonType: "number",
+                    description:'El dato "tipodoc_id" debe ser de tipo number'
+                },
+                tipodoc_nombre :{
+                    bsonType: "string",
+                    description:'El dato "tipodoc_nombre" debe ser de tipo string'
+                },
+                tipodoc_abreviatura :{
+                    bsonType: "string",
+                    description:'El dato "tipodoc_abreviatura" debe ser de tipo string'
+                }
+            }
+        }
+    }
+});
+
+db.createCollection("especialidad",{
+    capped: true,
+    size: 10000,
+    max: 50,
+    validator:{
+        $jsonSchema:{
+            bsonType: 'object',
+            required: ['tipodoc_id', 'tipodoc_nombre', 'tipodoc_abreviatura'],
+            propierties: {
+                tipodoc_id :{
+                    bsonType: "number",
+                    description:'El dato "tipodoc_id" debe ser de tipo number'
+                },
+                tipodoc_nombre :{
+                    bsonType: "string",
+                    description:'El dato "tipodoc_nombre" debe ser de tipo string'
+                },
+                tipodoc_abreviatura :{
+                    bsonType: "string",
+                    description:'El dato "tipodoc_abreviatura" debe ser de tipo string'
+                }
+            }
+        }
+    }
+});
+
+db.createCollection("consultorio",{
+    capped: true,
+    size: 10000,
+    max: 50,
+    validator:{
+        $jsonSchema:{
+            bsonType: 'object',
+            required: ['tipodoc_id', 'tipodoc_nombre', 'tipodoc_abreviatura'],
+            propierties: {
+                tipodoc_id :{
+                    bsonType: "number",
+                    description:'El dato "tipodoc_id" debe ser de tipo number'
+                },
+                tipodoc_nombre :{
+                    bsonType: "string",
+                    description:'El dato "tipodoc_nombre" debe ser de tipo string'
+                },
+                tipodoc_abreviatura :{
+                    bsonType: "string",
+                    description:'El dato "tipodoc_abreviatura" debe ser de tipo string'
+                }
+            }
+        }
+    }
+});
