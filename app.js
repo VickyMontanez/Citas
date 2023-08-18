@@ -4,8 +4,8 @@ dotenv.config();
 
 const appDev = express();
 appDev.use(express.json());
-const config = process.env.MY_CONFIG;
+const config = JSON.parse(process.env.MY_CONFIG);
 
 appDev.listen(config, ()=>{
     console.log(`http://${config.hostname}:${config.port}`);
-})
+});
