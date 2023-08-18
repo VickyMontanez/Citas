@@ -7,7 +7,7 @@ db.createCollection("tipo_documento", {
         $jsonSchema:{
             bsonType: 'object',
             required: ['tipodoc_id', 'tipodoc_nombre', 'tipodoc_abreviatura'],
-            propierties: {
+            properties: {
                 tipodoc_id :{
                     bsonType: "number",
                     description:'El dato "tipodoc_id" debe ser de tipo number'
@@ -33,7 +33,7 @@ db.createCollection("genero",{
         $jsonSchema:{
             bsonType: 'object',
             required: ['gen_id', 'gen_nombre', 'gen_abreviatura'],
-            propierties: {
+             properties: {
                 gen_id :{
                     bsonType: "number",
                     description:'El dato "gen_id" debe ser de tipo number'
@@ -59,7 +59,7 @@ db.createCollection("acudiente", {
         $jsonSchema:{
             bsonType: 'object',
             required: ['acu_codigo', 'acu_nombre', 'acu_telefono', "acu_direccion"],
-            propierties: {
+             properties: {
                 acu_codigo :{
                     bsonType: "number",
                     description:'El dato "acu_codigo" debe ser de tipo number'
@@ -88,8 +88,8 @@ db.createCollection("usuario",{
     validator:{
         $jsonSchema:{
             bsonType: 'object',
-            required: ['usu_id', 'usu_nombre', 'tipodoc_abreviatura'],
-            propierties: {
+            required: ['usu_id', 'usu_nombre', 'usu_segdo_nombre', "usu_primer_apellido_usuar", "usu_segdo_apellido_usuar", "usu_telefono", "usu_direccion", "usu_email", "usu_tipodoc", "usu_genero", "usu_acudiente" ],
+             properties: {
                 usu_id :{
                     bsonType: "number",
                     description:'El dato "usu_id" debe ser de tipo number'
@@ -98,9 +98,41 @@ db.createCollection("usuario",{
                     bsonType: "string",
                     description:'El dato "usu_nombre" debe ser de tipo string'
                 },
-                tipodoc_abreviatura :{
+                usu_segdo_nombre :{
                     bsonType: "string",
-                    description:'El dato "tipodoc_abreviatura" debe ser de tipo string'
+                    description:'El dato "usu_segdo_nombre" debe ser de tipo string'
+                },
+                usu_primer_apellido_usuar :{
+                    bsonType: "string",
+                    description:'El dato "usu_primer_apellido_usuar" debe ser de tipo string'
+                },
+                usu_segdo_apellido_usuar :{
+                    bsonType: "string",
+                    description:'El dato "usu_segdo_apellido_usuar" debe ser de tipo string'
+                },
+                usu_telefono :{
+                    bsonType: "string",
+                    description:'El dato "usu_telefono" debe ser de tipo string'
+                },
+                usu_direccion:{
+                    bsonType: "string",
+                    description: 'El dato "usu_direccion" debe ser de tipo string'
+                },
+                usu_email:{
+                    bsonType: "string",
+                    description: 'El dato "usu_email" debe ser de tipo string'
+                },
+                usu_tipodoc:{
+                    bsonType: "number",
+                    description: 'El dato "usu_tipodoc" debe ser de tipos number'
+                },
+                usu_genero:{
+                    bsonType: "number",
+                    description: 'El dato "usu_genero" debe ser de tipo number'
+                },
+                usu_acudiente:{
+                    bsonType: "number",
+                    description: 'El dato "usu_acudiente" debe ser de tipo number'
                 }
             }
         }
@@ -114,19 +146,27 @@ db.createCollection("cita",{
     validator:{
         $jsonSchema:{
             bsonType: 'object',
-            required: ['tipodoc_id', 'tipodoc_nombre', 'tipodoc_abreviatura'],
-            propierties: {
-                tipodoc_id :{
+            required: ['cit_codigo', 'cit_fecha', 'estado_cita', "cit_medico", "cit_datosUsuario"],
+             properties: {
+                cit_codigo :{
                     bsonType: "number",
-                    description:'El dato "tipodoc_id" debe ser de tipo number'
+                    description:'El dato "cit_codigo" debe ser de tipo number'
                 },
-                tipodoc_nombre :{
-                    bsonType: "string",
-                    description:'El dato "tipodoc_nombre" debe ser de tipo string'
+                cit_fecha :{
+                    bsonType: "date",
+                    description:'El dato "cit_fecha" debe ser de tipo date'
                 },
-                tipodoc_abreviatura :{
-                    bsonType: "string",
-                    description:'El dato "tipodoc_abreviatura" debe ser de tipo string'
+                estado_cita :{
+                    bsonType: "number",
+                    description:'El dato "estado_cita" debe ser de tipo number'
+                },
+                cit_medico :{
+                    bsonType: "number",
+                    description:'El dato "cit_medico" debe ser de tipo number'
+                },
+                cit_datosUsuario :{
+                    bsonType: "number",
+                    description:'El dato "cit_datosUsuario" debe ser de tipo number'
                 }
             }
         }
@@ -140,19 +180,15 @@ db.createCollection("estado_cita",{
     validator:{
         $jsonSchema:{
             bsonType: 'object',
-            required: ['tipodoc_id', 'tipodoc_nombre', 'tipodoc_abreviatura'],
-            propierties: {
-                tipodoc_id :{
+            required: ['estcita_id', 'estcita_nombre'],
+             properties: {
+                estcita_id :{
                     bsonType: "number",
-                    description:'El dato "tipodoc_id" debe ser de tipo number'
+                    description:'El dato "estcita_id" debe ser de tipo number'
                 },
-                tipodoc_nombre :{
+                estcita_nombre :{
                     bsonType: "string",
-                    description:'El dato "tipodoc_nombre" debe ser de tipo string'
-                },
-                tipodoc_abreviatura :{
-                    bsonType: "string",
-                    description:'El dato "tipodoc_abreviatura" debe ser de tipo string'
+                    description:'El dato "estcita_nombre" debe ser de tipo string'
                 }
             }
         }
@@ -166,19 +202,23 @@ db.createCollection("medico",{
     validator:{
         $jsonSchema:{
             bsonType: 'object',
-            required: ['tipodoc_id', 'tipodoc_nombre', 'tipodoc_abreviatura'],
-            propierties: {
-                tipodoc_id :{
+            required: ['med_nroMatriculaProsional', 'med_nombreCompleto', 'med_consultorio', "med_especialidad"],
+             properties: {
+                med_nroMatriculaProsional :{
                     bsonType: "number",
-                    description:'El dato "tipodoc_id" debe ser de tipo number'
+                    description:'El dato "med_nroMatriculaProsional" debe ser de tipo number'
                 },
-                tipodoc_nombre :{
+                med_nombreCompleto :{
                     bsonType: "string",
-                    description:'El dato "tipodoc_nombre" debe ser de tipo string'
+                    description:'El dato "med_nombreCompleto" debe ser de tipo string'
                 },
-                tipodoc_abreviatura :{
-                    bsonType: "string",
-                    description:'El dato "tipodoc_abreviatura" debe ser de tipo string'
+                med_consultorio :{
+                    bsonType: "number",
+                    description:'El dato "med_consultorio" debe ser de tipo number'
+                },
+                med_especialidad :{
+                    bsonType: "number",
+                    description:'El dato "med_especialidad" debe ser de tipo number'
                 }
             }
         }
@@ -192,19 +232,15 @@ db.createCollection("especialidad",{
     validator:{
         $jsonSchema:{
             bsonType: 'object',
-            required: ['tipodoc_id', 'tipodoc_nombre', 'tipodoc_abreviatura'],
-            propierties: {
-                tipodoc_id :{
+            required: ['esp_id', 'esp_nombre', 'tipodoc_abreviatura'],
+             properties: {
+                esp_id :{
                     bsonType: "number",
-                    description:'El dato "tipodoc_id" debe ser de tipo number'
+                    description:'El dato "esp_id" debe ser de tipo number'
                 },
-                tipodoc_nombre :{
+                esp_nombre :{
                     bsonType: "string",
-                    description:'El dato "tipodoc_nombre" debe ser de tipo string'
-                },
-                tipodoc_abreviatura :{
-                    bsonType: "string",
-                    description:'El dato "tipodoc_abreviatura" debe ser de tipo string'
+                    description:'El dato "esp_nombre" debe ser de tipo string'
                 }
             }
         }
@@ -218,19 +254,15 @@ db.createCollection("consultorio",{
     validator:{
         $jsonSchema:{
             bsonType: 'object',
-            required: ['tipodoc_id', 'tipodoc_nombre', 'tipodoc_abreviatura'],
-            propierties: {
-                tipodoc_id :{
+            required: ['cons_codigo', 'cons_nombre'],
+             properties: {
+                cons_codigo :{
                     bsonType: "number",
-                    description:'El dato "tipodoc_id" debe ser de tipo number'
+                    description:'El dato "cons_codigo" debe ser de tipo number'
                 },
-                tipodoc_nombre :{
+                cons_nombre :{
                     bsonType: "string",
-                    description:'El dato "tipodoc_nombre" debe ser de tipo string'
-                },
-                tipodoc_abreviatura :{
-                    bsonType: "string",
-                    description:'El dato "tipodoc_abreviatura" debe ser de tipo string'
+                    description:'El dato "cons_nombre" debe ser de tipo string'
                 }
             }
         }
